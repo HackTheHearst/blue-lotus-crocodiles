@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Map</title>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        svg {
+            cursor: all-scroll;
+            width: 100%;
+            height: 90vh;
+        }
+
+        image {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+
+    <script>
+        var node, dialog;
+
+        function expand(svg, node) {
+            var $svg = $('svg');
+            var width = $svg.width(),
+                height = $svg.height();
+            var center = [width/2, height/2];
+
+            var $this = d3.select(node);
+            var $thisImage = $this.select('image');
+            var $thisImageScale = parseFloat($thisImage.attr('transform').match(/scale\((.+)\)/)[1], 10);
+            var $thisImageWidth = parseFloat($thisImage.attr('width'), 10),
+                $thisImageHeight = parseFloat($thisImage.attr('height'), 10);
+                $thisTranslate = $this.attr('transform').match(/translate\((.+?),(.+?)\)/);
+            var end = [
+                parseFloat($thisTranslate[1], 10) + $thisImageWidth * $thisImageScale * 0.5,
+                parseFloat($thisTranslate[2], 10) + $thisImageHeight * $thisImageScale * 0.5,
+                $thisImageWidth * $thisImageScale
+            ];
+
+            var k = height / end[2];
+            zoom.translate([center[0] - end[0] * k, center[1] - end[1] * k]).scale(k);
+            zoom.event(svg.transition().duration(1000));
+        }
+
+        function setImgDimensions(d, i) {
+            var dImage = d3.select(d);
+
+            var tempImage = new Image();
+
+            tempImage.onload = function() {
+                dImage.attr('width', this.width)
+                    .attr('height', this.height)
+                    .attr('transform', function(d, i) { return 'scale('+ d.scale +')'; });
+
+                if (i === 0) expand(node, node.node());
+            };
+            tempImage.src = dImage.attr('href');
+        }
+
+        function addImages() {
+            this.each(function(d, i) {
+                setImgDimensions(this, i);
+            });
+        }
+
+        function getImgUrl(blob, term) {
+            term = term || 'OriginalJpeg';
+
+            return 'https://dev.cspace.berkeley.edu/pahma_project/imageserver/blobs/' + blob + '/derivatives/' + term + '/content';
+        }
+
+        var zoom = d3.behavior.zoom()
+            .scaleExtent([0.2, 8])
+            .on('zoom', onZoom);
+
+        function onZoom() {
+            svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+        }
+
+        var svg = d3.select('body').append('svg')
+          .append('g')
+            .call(zoom)
+          .append('g');
+
+
+        d3.json('nodes.json', function(error, root) {
+
+            var dialog = d3.select('body').selectAll('.dialog')
+                .data(root)
+              .enter().append('div')
+                .attr('class', function(d) { return 'dialog dialog-' + d.blob; })
+                .html(function(d) {
+                    return (
+                        '<h1>' + (d.name || d.objname_s) + '</h1>' +
+                        ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '') + 
+                        '<p>' + d.objdescr_s + '</p>'
+                    );
+                })
+                .each(function(d) {
+                    $(this).dialog({
+                        autoOpen: false,
+                        width: document.documentElement.clientWidth * .2,
+                        height: document.documentElement.clientHeight,
+                        position: {my: 'right top', at: 'right top'}
+                    });
+
+                    if (d.objmusno_s === '6-19825') $(this).dialog('open');
+                });
+
+            node = svg.selectAll('.node')
+                .data(root)
+              .enter().append('g')
+                .attr('class', 'node')
+                .attr('transform', function(d) { return 'translate(' + d.translate +')'; })
+                .on('click', function(d) {
+                    if (d3.event.defaultPrevented) return;
+
+                    $('.ui-dialog[style*=block] > .dialog').dialog('close');
+                    $('.dialog-' + d.blob).dialog('open');
+
+                    d3.select('g > g').call(expand, this);
+                });
+
+            node.append('title')
+                .text(function(d) { return d.objname_s; });
+
+            node.append('image')
+                .attr('xlink:href', function(d) { return getImgUrl(d.blob); })
+                .call(addImages);
+
+        });
+    </script>
+
+</body>
+</html>
