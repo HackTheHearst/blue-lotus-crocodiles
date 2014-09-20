@@ -1,0 +1,82 @@
+[
+	{
+		"id": "664ebcad-bb1e-4931-82bd-231bf8d6f5c6",
+		"objmusno_s": "6-19497",
+		"objname_s": "Bracelet",
+		"objdescr_s": "ivory bracelet",
+		"blob": "776182eb-7226-43b9-8681",
+		"name": "Ivory Bracelet",
+		"hint": "Bracelets were worn by both men and women, rich and poor.",
+		"value": 2
+	},
+	{
+		"id": "16a889d2-146d-4a8c-bb59-3cc5f0a992ea",
+		"objmusno_s": "6-18498",
+		"objname_s": "Kohl Tube",
+		"objdescr_s": "ivory tube with one peg, resembling post, possibly a container, octagonal, divided by band of incised lines, length 10 d 2 cm",
+		"blob": "7f41ddeb-c17c-4b35-9257",
+		"name": "Kohl Tube",
+		"hint": "Kohl was applied around the eyes for protection.",
+		"value": 1
+	},
+	{
+		"id": "87678895-3033-440b-a531-c866230228ee",
+		"objmusno_s": "6-17161",
+		"objname_s": "Model",
+		"objdescr_s": "Wooden model scene of men & women: bread makers (tallest figure is 9 1/4\" high); male- miller; male- stacking bread molds; female- sifter; female- sifter.",
+		"blob": "4733115c-c98e-4193-a7d7",
+		"name": "Model of Bread Making Scene",
+		"hint": "Bread was a staple of the ancient Egyptian diet and was offered to the deceased.",
+		"value": 4
+	},
+	{
+		"id": "19ad32e1-afa7-4927-9600-b6db5d56cce6",
+		"objmusno_s": "6-5996",
+		"objname_s": "Jar",
+		"objdescr_s": "Pottery; smooth, pinkish jar,  flaring mouth, incised line on neck",
+		"blob": "087aff6f-b339-4f04-9eea",
+		"name": "Jar",
+		"hint": "Beer, wine, honey, and olive oil were stored in jars and offered to the deceased.",
+		"value": 5
+	},
+	{
+		"id": "5a18fdca-e31c-40f9-8dab-db81518e2d29",
+		"objmusno_s": "6-19835",
+		"objname_s": "shabti jar",
+		"objdescr_s": "pottery shabti jar with painted figures; the deceased (woman) kneels before Anubis, in form of a jackal on shrine.  3 of 4 sons of Horus: Hapy, Duamutef and Imseti on other side.",
+		"blob": "e6dd23c2-76c5-4917-b945",
+		"name": "Shabti Jar",
+		"hint": "The jackal-headed deity Anubis was sometimes represented in full animal form, seated on a shrine.",
+		"value": 8
+	},
+	{
+		"id": "33cc9de6-445d-4635-8525-aa08a06613a5",
+		"objmusno_s": "6-17160",
+		"objname_s": "Model funerary boat w/ crew",
+		"objdescr_s": "Type IV model boat, sailed; 4 sailors, 1 pilot/lookout & 2 helmsmen. Canopy supported by 6 posts with coffin beneath. 1 stearing oar survived (originally 2), gangplank, 2 morring stakes, bailing bucket, 6 oars, part of bipod mast, 3 spars. Boat is white with yellow painted details",
+		"blob": "bbcc1055-300f-4b12-8423",
+		"name": "Model Funerary Boat with Crew",
+		"hint": "The ancient Egyptians believed that the gods traveled through the sky and netherworld in boats.",
+		"value": 7
+	},
+	{
+		"id": "f62bd5d8-6f0f-460b-a1c1-d59a0f1d542b",
+		"objmusno_s": "5-201",
+		"objname_s": "Scarab",
+		"objdescr_s": "green faience; Mn-hpr-Rc, flanked by 2 ma'at feathers and 2 ureii.",
+		"blob": "dece1b4f-a4b5-4400-846b",
+		"name": "Scarab with Two Feathers",
+		"hint": "The symbol for truth and justice was the feather, which was used in the Weighing of the Heart ceremony.",
+		"value": 6
+	},
+	{
+		"id": "90e97c6c-48e2-4a65-b4ac-18982e737377",
+		"objmusno_s": "6-15468",
+		"objname_s": "Model beef haunch",
+		"objdescr_s": "wooden animal leg, painted red, black and white; model of beef haunch.",
+		"blob": "eb46620f-587d-4c78-938e",
+		"name": "Model Beef Haunch",
+		"hint": "Cows were an important part of the ancient Egyptian agricultural system and symbolized rebirth.",
+		"value": 3
+	}
+]
