@@ -1,0 +1,147 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica';
+  letter-spacing:-0.5px;
+  background:#222533;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#71D3D0;
+}
+
+a {
+  color:#71D3D0;
+  text-decoration:none;
+}
+
+a:hover {
+  color: #F38882;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script></head><body>
+<div><h5>Presenting:</h5><em><h3>Time Capsule</h3></em></div>
+<div><h5><em>Target Audience:</em></h5><h2>K-12 students</h2></div>
+<div><h5>Why does cultural heritage matter?</h5></div>
+<div><h5>How does history relate to our lives?</h5></div>
+<div><h5><em>GOALS</em></h5><h3>To facilitate exploration, discovery, and engagement with the past</h3></div>
+<div><h5>To create an interface that mirrors the <em>process of archaeology</em>; looking at things <em>relationally</em></h5></div>
+<div><h5>To create an <em>experiential learning environment</em></h5></div>
+<div><h2></h2><img src="https://raw.githubusercontent.com/angelausy/blue-lotus-crocodiles/master/static/IMG_2984%20blue%20lotus%20crocodile%20rhizome%20map.jpg"></div>
+<div><h5><em>USE CASE</em></h5>
+<h4>Designed to be used in a classroom or gallery; the tool is intended to provoke collaborative learning.</h4></div>
+<div><h1><em>DEMO</em></h1></div>
+<div><h4><em>USER TESTING</em> at Albany Middle School*</h4>
+  <h6>* who claimed no knowledge of Ancient Egypt, but actually knew & recognized quite a bit</h6></div>
+<div><h6>"I like the layout. If you see something that you're curious what it is, you can just click on. But also it's not just a word description. You actually have a visual."</h6></div>
+<div><h3><em>USER FEEDBACK + CHANGES WE MADE</em></h3>
+    <ul>
+    <li><h5>Users wanted confirmation for correct answers; we turned targets green</h5></li>
+    <li><h5>Users wanted rewards, liked mummies; we added a mummmified crocodile image when matching game was completed successfully</h5></li>
+    <li><h5>Users wanted instructions, particularly on gallery page; we added explanatory text</h5></li>
+    <li><h5>Users wanted more games for other cultures and eras, i.e., Ancient Greece, Civil War</h5></li>
+  </ul>
+</div>
+<div>learn more:<br><a href="http://">SOURCE CODE</a></div>
+<div><h3><em>The team</em></h3>
+  <ul>
+    <li>Angela Lau</li>
+    <li>Michael Katz</li>
+    <li>Casondra Sobieralski</li>
+    <li>Maggie Shine</li>
+</div>
+<div><em>THANK YOU</em> to mentors:</div>
+<div>
+  <ul>
+  <li><h2>Mary Lou Bilbao</h3></li>
+  <li><h2>Elizabeth Minor</h2></li>
+  <li><h2>Leslie Tom</h2></li>
+  <li><h2>Joseph Eyres</h2></li>
+</ul>
+</div>

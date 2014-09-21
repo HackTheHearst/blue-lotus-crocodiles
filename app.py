@@ -13,9 +13,9 @@ def match():
 def map():
 	return render_template("gallery.html")
 
-@app.route('/about')
+@app.route('/presentation')
 def about():
-	return render_template("about.html")
+	return render_template("hackthehearst.html")
 
 if __name__ == '__main__':
 	app.run(debug=True)
