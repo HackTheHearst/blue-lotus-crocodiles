@@ -1,39 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>Map</title>
-    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
-
-        svg {
-            cursor: all-scroll;
-            width: 100%;
-            height: 90vh;
-        }
-
-        image {
-            cursor: pointer;
-        }
-    </style>
+    <title>Time Capsule: Ancient Egypt</title>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
+    <link href="static/style.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="body--gallery">
+    <header class="clearfix" role="banner">
+        <h1 class="title--gallery">Time Capsule: Ancient Egyptian Life</h1>
+        <div class="controls">
+            <button class="zoom" data-zoom-direction="out">Zoom Out</button>
+            <button class="zoom" data-zoom-direction="in">Zoom In</button>
+        </div>
+    </header>
+
+    <div class="dialog clearfix">
+        <div class="dialog-shabti">
+            <img class="dialog-shabti-avatar" src="static/shabti.gif" alt="Usabti">
+            <button class="show-instructions">Directions</button>
+        </div>
+        <div class="dialog-instructions">
+            <p>
+                Steles, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary steles include
+                the name of the deceased and the offerings made by family members. Can you guess what was important to the ancient Egyptians
+                by looking for common themes in the following artifacts?
+            </p>
+            <p>
+                Can you match the objects on the right with the hieroglyph or symbol on the stele of Wepemnofret? Place the objects in the correct box. 
+            </p>
+        </div>
+        <div class="dialog-object"></div>
+    </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="static/app.js"></script>
 
     <script>
-        var node, dialog;
+        var svg, svgWidth, svgHeight, node, dialog;
+
+        function getSvgDimension(dim) {
+            var $svg = $('svg'),
+                value = null;
+            switch (dim) {
+                case 'width':
+                    svgWidth = $svg.width();
+                    value = svgWidth;
+                    break;
+                case 'height':
+                    svgHeight = $svg.height();
+                    value = svgHeight;
+                    break;      
+            }
+            return value;
+        }
 
         function expand(svg, node) {
-            var $svg = $('svg');
-            var width = $svg.width(),
-                height = $svg.height();
+            var width = svgWidth || getSvgDimension('width'),
+                height = svgHeight || getSvgDimension('height');
             var center = [width/2, height/2];
 
             var $this = d3.select(node);
@@ -81,42 +108,54 @@
         }
 
         var zoom = d3.behavior.zoom()
-            .scaleExtent([0.2, 8])
+            .scaleExtent([0.4, 8])
             .on('zoom', onZoom);
 
         function onZoom() {
             svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         }
 
-        var svg = d3.select('body').append('svg')
+        function zoomBy(factor) {
+            var width = svgWidth || getSvgDimension('width'),
+                height = svgHeight || getSvgDimension('height'),
+                scale = zoom.scale(),
+                extent = zoom.scaleExtent();
+
+            var newScale = scale * factor;
+
+            if (extent[0] <= newScale && newScale <= extent[1]) {
+                var xy = zoom.translate(),
+                    cxy = [width/2, height/2];
+
+                zoom
+                    .scale(newScale)
+                    .translate([
+                        cxy[0] + (xy[0] - cxy[0]) / scale * newScale,
+                        cxy[1] + (xy[1] - cxy[1]) / scale * newScale
+                    ])
+                    .event(svg);
+            }
+        }
+
+        $('.zoom').click(function() {
+            var k = (($(this).attr('data-zoom-direction') === 'in') ? 1.2 : 0.8);
+            zoomBy(k);
+        });
+
+        $('.show-instructions').click(function() {
+            $('.dialog-instructions').show();
+            $('.dialog-object').hide();
+        });
+
+        svg = d3.select('body').append('svg').attr('class', 'svg--gallery')
           .append('g')
             .call(zoom)
-          .append('g');
-
+          .append('g')
+            .attr('class', 'gallery');
 
         d3.json('static/nodes.json', function(error, root) {
 
-            var dialog = d3.select('body').selectAll('.dialog')
-                .data(root)
-              .enter().append('div')
-                .attr('class', function(d) { return 'dialog dialog-' + d.blob; })
-                .html(function(d) {
-                    return (
-                        '<h1>' + (d.name || d.objname_s) + '</h1>' +
-                        ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '') + 
-                        '<p>' + d.objdescr_s + '</p>'
-                    );
-                })
-                .each(function(d) {
-                    $(this).dialog({
-                        autoOpen: false,
-                        width: document.documentElement.clientWidth * .2,
-                        height: document.documentElement.clientHeight,
-                        position: {my: 'right top', at: 'right top'}
-                    });
-
-                    if (d.objmusno_s === '6-19825') $(this).dialog('open');
-                });
+            var object = d3.select('.dialog-object');
 
             node = svg.selectAll('.node')
                 .data(root)
@@ -126,10 +165,15 @@
                 .on('click', function(d) {
                     if (d3.event.defaultPrevented) return;
 
-                    $('.ui-dialog[style*=block] > .dialog').dialog('close');
-                    $('.dialog-' + d.blob).dialog('open');
-
                     d3.select('g > g').call(expand, this);
+
+                    $('.dialog-instructions').hide();
+
+                    object.html(function() {
+                        return '<h2>' + (d.name || d.objname_s) + '</h2>' +
+                            ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '') + 
+                            '<p>' + d.objdescr_s + '</p>';                           
+                    });
                 });
 
             node.append('title')

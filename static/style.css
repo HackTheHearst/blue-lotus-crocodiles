@@ -32,6 +32,11 @@ body {
     margin-right: 20px;
 }
 
+.instructions {
+    width: 80%;
+    margin-bottom: 1.5625em;
+    line-height: 1.5;
+}
 
 /* 
 ================================================================
@@ -42,12 +47,6 @@ body {
 .body--match {
     min-width: 72.3125em;
     padding: 0 3.125em;
-}
-
-.instructions {
-    width: 80%;
-    margin-bottom: 1.5625em;
-    line-height: 1.5;
 }
 
 .centerpiece {
@@ -185,7 +184,29 @@ image {
     text-align: right;
 }
 
-.dialog-instructions {
+.dialog {
     width: 80%;
     margin: 1.5625em auto;
+}
+
+.dialog-shabti {
+    float: left;
+    width: auto;
+    text-align: center;
+}
+
+.dialog-shabti-avatar {
+    display: block;
+    width: 3.375em;
+    height: auto;
+    margin: 0 auto 1.25em auto;
+}
+
+.dialog-instructions,
+.dialog-object {
+    margin-left: 6.5em;
+}
+
+.show-instructions {
+    display: block;
 }

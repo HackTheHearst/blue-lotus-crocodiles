@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Matching</title>
+    <title>Time Capsule: Ancient Egypt</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
     <link href="static/style.css" rel="stylesheet">
 </head>
@@ -12,7 +12,7 @@
     <div class="board">
         <div class="instructions clearfix">
             <h1>Time Capsule: The Stela of Prince Wepemnofret</h1>
-            <img class="shabti-avatar" src="https://dl.dropboxusercontent.com/u/90597733/shabti.gif">
+            <img class="shabti-avatar" src="static/shabti.gif" alt="Ushabti">
             <p>
                 Stelas, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary stelas include
                 the name of the deceased and the offerings made by family members. Can you guess what was important to the ancient Egyptians
@@ -186,6 +186,9 @@
                         d3.select('.marker-' + d.value).attr('class', function() {
                             return d3.select(this).attr('class') + ' marker-checked';
                         });
+
+                        zoom.translate([0,0]).scale(1)
+                            .event(svg.transition().duration(1000));
                     }
                 });
             });
