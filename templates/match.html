@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Time Capsule: Ancient Egypt</title>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
     <link href="static/style.css" rel="stylesheet">
 </head>
@@ -34,6 +35,8 @@
         </div>
     </div>
 
+    <div class="modal-shabti"></div>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
@@ -50,6 +53,15 @@
         var zoom =  d3.behavior.zoom()
             .scaleExtent([1, 5])
             .on('zoom', onZoom);
+
+        $('.modal-shabti').dialog({
+            autoOpen: false,
+            modal: true
+        }).html('<p>Shabti (also spelled ushabti) were like little servants that ancient Egyptians put in tombs to help the dead. They were a bit like zombies! This shabti is here to help guide live people like you through this exploration.</p>');
+
+        $('.shabti-avatar').click(function() {
+            $('.modal-shabti').dialog('open');
+        });
 
         d3.json('static/cards.json', function(error, cards) {
 

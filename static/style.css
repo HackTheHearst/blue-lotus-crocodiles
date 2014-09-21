@@ -26,6 +26,7 @@ body {
 */
 
 .shabti-avatar {
+    cursor: pointer;
     float: left;
     width: 3.375em;
     height: auto;
