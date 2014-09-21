@@ -23,7 +23,6 @@ class ReadingList(restful.Resource):
         reading_id =  mongo.db.readings.insert(jo)
         return mongo.db.readings.find_one({"_id": reading_id})
 
-
 class Reading(restful.Resource):
     def get(self, reading_id):
         return mongo.db.readings.find_one_or_404({"_id": reading_id})

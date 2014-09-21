@@ -141,8 +141,13 @@
             d3.select(this).select('g').attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         }
 
+        var stuff = []
+        
+        {% for card in data %}
+            stuff.push({{card|safe}})
+        {% endfor %}
 
-        d3.json('cards.json', function(error, cards) {
+        d3.json(stuff, function(error, cards) {
 
             var drop = d3.select('.centerpiece')
                 .selectAll('.drop')

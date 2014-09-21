@@ -15,6 +15,7 @@ app.config['MONGO_URI'] = MONGO_URL
 mongo = PyMongo(app)
 
 def output_json(obj, code, headers=None):
+	print "fuck"
 	resp = make_response(dumps(obj), code)
 	resp.headers.extend(headers or {})
 	return resp

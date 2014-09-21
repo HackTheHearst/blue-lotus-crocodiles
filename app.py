@@ -6,21 +6,20 @@ from bson.json_util import dumps
 from jinja2 import Template
 from pprint import pprint
 import json
-from flask_rest_service import app
+# from flask_rest_service import app
 
-app.run(debug=True)
 
-# @app.route('/')
-# def index():
-# 	def load_json(file):
-# 		data = open(file)
-# 		cards = json.load(data)
+app = Flask(__name__)
 
-# 	cards =	load_json("static/cards.json")
 
-# 	print cards
+@app.route('/')
+def index():
+	data =	open("static/cards.json")
+	cards = json.load(data)
 
-# 	return render_template("index.html", data = cards)
+	print type(cards)
 
-# if __name__ == '__main__':
-# 	app.run(debug=True)
+	return render_template("match.html", data = cards)
+
+if __name__ == '__main__':
+	app.run(debug=True)
