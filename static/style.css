@@ -57,13 +57,13 @@ body {
 */
 
 .body--match {
-    min-width: 72.3125em;
-    padding: 0 3.125em;
+    min-width: 77.3125em;
+    padding: 0 2em;
 }
 
 .centerpiece {
     float: left;
-    width: 80%;
+    width: 85%;
     min-width: 57.8125em;
     margin-bottom: 3.125em;  
 }
@@ -95,7 +95,7 @@ body {
 
 .cards {
     float: left;
-    width: 18%;
+    width: 13%;
     margin-left: 2%;
 }
 
