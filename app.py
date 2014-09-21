@@ -6,6 +6,7 @@ from bson.json_util import dumps
 from jinja2 import Template
 from pprint import pprint
 import json
+from flask import jsonify
 # from flask_rest_service import app
 
 
@@ -16,10 +17,9 @@ app = Flask(__name__)
 def index():
 	data =	open("static/cards.json")
 	cards = json.load(data)
-
 	print type(cards)
 
-	return render_template("match.html", data = cards)
+	return render_template("match.html", data = jsonify(cards))
 
 if __name__ == '__main__':
 	app.run(debug=True)

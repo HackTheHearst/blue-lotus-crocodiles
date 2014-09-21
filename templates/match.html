@@ -143,8 +143,8 @@
 
         var stuff = []
         
-        {% for card in data %}
-            stuff.push({{card|safe}})
+        {% for item in data %}
+            stuff.push({{item|safe}})
         {% endfor %}
 
         d3.json(stuff, function(error, cards) {
