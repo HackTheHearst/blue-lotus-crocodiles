@@ -20,26 +20,36 @@
     <div class="dialog clearfix">
         <div class="dialog-shabti">
             <img class="dialog-shabti-avatar" src="static/shabti.gif" alt="Usabti">
-            <button class="show-instructions">Directions</button>
+            <button class="show-instructions">Instructions</button>
         </div>
         <div class="dialog-instructions">
             <p>
-                Steles, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary steles include
-                the name of the deceased and the offerings made by family members. Can you guess what was important to the ancient Egyptians
-                by looking for common themes in the following artifacts?
+                How do archaeologists make sense of what they find?
             </p>
             <p>
-                Can you match the objects on the right with the hieroglyph or symbol on the stele of Wepemnofret? Place the objects in the correct box. 
+                Part of archaeology is seeking to understand artifacts’ “context.” How do an object’s location, and its relationship to other objects, help an archaeologist or art historian create theories about its meaning?
+            </p>
+            <p>
+                It’s also fun to think about how our own lives relate to ancient lives. We have to be careful, though, to avoid painting cultural biases from our own times onto other cultures &ndash;  past or present. But this is hard to resist, because the very questions we ask reflect our own culture. Sometimes, though, comparisons provide a starting place for making connections with ancient puzzle pieces.
+            </p>
+            <p>
+                On this page, you can start to think like an archaeologist! Talk with your teacher and classmates to make theories about how objects on this page relate to the other objects near them. 
+            </p>
+            <p>
+                We provided you with some classroom questions to get you started. If you don’t know the answers to the questions, try to find the answers together in books or on the Internet with your teacher. You could also write to an archaeologist at a museum or university if you cannot find an answer. Archaeologists love hearing from young people who are interested in their field of study!
             </p>
         </div>
         <div class="dialog-object"></div>
     </div>
+
+    <div class="modal-shabti"></div>
 
     <div class="footnote">
         Rulers are included in some photos to show objects' sizes. Color chips are included to confirm that your display shows objects' true colors.
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
     <script src="static/app.js"></script>
 
@@ -111,6 +121,15 @@
             return 'https://dev.cspace.berkeley.edu/pahma_project/imageserver/blobs/' + blob + '/derivatives/' + term + '/content';
         }
 
+        $('.modal-shabti').dialog({
+            autoOpen: false,
+            modal: true
+        }).html('<p>Shabti (also spelled ushabti) were like little servants that ancient Egyptians put in tombs to help the dead. They were a bit like zombies! This shabti is here to help guide live people like you through this exploration.</p>');
+
+        $('.dialog-shabti-avatar').click(function() {
+            $('.modal-shabti').dialog('open');
+        });
+
         var zoom = d3.behavior.zoom()
             .scaleExtent([0.4, 8])
             .on('zoom', onZoom);
@@ -148,7 +167,7 @@
 
         $('.show-instructions').click(function() {
             $('.dialog-instructions').show();
-            $('.dialog-object').hide();
+            $('.dialog-object').text('');
         });
 
         svg = d3.select('body').append('svg').attr('class', 'svg--gallery')
@@ -175,13 +194,12 @@
 
                     object.html(function() {
                         return '<h2>' + (d.name || d.objname_s) + '</h2>' +
-                            ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '') + 
-                            '<p>' + d.objdescr_s + '</p>';                           
+                            ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '');                         
                     });
                 });
 
             node.append('title')
-                .text(function(d) { return d.objname_s; });
+                .text(function(d) { return d.name || d.objname_s; });
 
             node.append('image')
                 .attr('xlink:href', function(d) { return getImgUrl(d.blob); })

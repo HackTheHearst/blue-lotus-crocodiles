@@ -5,12 +5,13 @@
 		"objname_s": "Stela",
 		"objdescr_s": "Limestone, pigment: Giza, Western Cemetery, tomb G1201; Old Kingdom, Dynasty 4 (c. 2589-2566 BCE) This carved stone relief depicts the King's son Wep-em-nofret seated at an offering table. His elite status is demonstrated by his extensive titularly, dress (valanced wig, \"noble\" beard, and leopard-skin wrap), and use of a stool made of costly wood. The text on the stela contains his numerous titles, a list of the provisions thought essential for his afterlife existence (including incense, eye paint oils, wine, and foodstuffs), and a list of the linen that may have been included in his burial.  Slab stela some exclusively from Giza, where they were installed in the western facades of mastaba tombs located in elite cemeteries immediately west of the Great Pyramid. Their markedly uniform style and decorative scheme suggest they were products of (at most) two generations of artists. The high quality of their executions indicates that they were royal gifts to a select group of royal relatives and officers. Of the only fifteen examples (four in the Hearst Museum) known to have survived, that of Wep-em-nofret stands out as one the largest, the best preserved, most complex, and earliest examples. A mortuary chapel was built against the eastern facade of Wep-em-nofret's mastaba, protecting the stela in antiquity and resulting in its exceptional preservation. Since excavation, soluble salts have posed the greatest risk to the continued preservation of the paint When the humidity around they sculpture dropsm salt migrate to the surface of the stone and crystalize, right at the interface between paint and stone. The physical action of salt crystalization forces the paint off the surface. In 1940 the stela was placed in a special climate-controlled case to control salt activity. This remains the primary means of protection, although the case design has changed at least three times. Long-term storage in a special case also resulted in minimal handling of the stela, a secondary protective measure. The first documented treatment to secure the paint to the stone was undertaken in 1962 by a conservator at the Boston Museum of Fine Arts, who applied a very dilute resin that is still in use today. That treatment has not had to be undone, and has only been supplemented over the years by additional localized paint consolidation.   Slab stela of Wepemnofret, painted low relief. Wepemnofret sits on a stool with bovine legs in front of an offering table with bread loaves. He wears a shoulder length wig, mustache, squared beard, long leopard pelt and bracelets. The two right-most columns and topmost row of hieroglyphs face the same way as him and contain his titles. The signs directly above him spell out his name (wpmnfrt). The rows of hieroglyphs under the three falcons on standards are his linen list. The remaining columns of hieroglyphs which face him list his other offerings",
 		"objfcpgeo_p": "0, 0",
+		"name": "Stela of Prince Wepemnofret",
 		"questions": [
 			"What can you discern about daily life in ancient Egypt from the stele of Wepemnofret?",
-			"What parallels do you see in your own life?"
+			"What parallels do you see in your own life?",
+			"Who was Wepemnofret?"
 		],
 		"blob": "96a58f7d-8538-46fd-b261",
-		"name": "Stele",
 		"scale": 0.13947436663504187,
 		"translate": [497,172]
 	},
@@ -22,7 +23,7 @@
 		"objfcpgeo_p": "26.4361, 31.8042",
 		"questions": [
 			"Why was kohl eyeliner worn, by both men and women?",
-			"What can we learn about cultural constructions of \"beauty\" and \"gender\" from other cultures?",
+			"What can we learn about how changing ideas of \"beauty\" and \"gender\" by looking at other cultures, past and present?",
 			"What other cosmetics did the Egyptians use?"
 		],
 		"blob": "7f41ddeb-c17c-4b35-9257",
@@ -35,8 +36,10 @@
 		"objname_s": "Amulet, Eye",
 		"objdescr_s": "green glaze eye amulet, large. New Empire",
 		"objfcpgeo_p": "29.116667, 30.75",
+		"name": "Eye Amulet",
 		"questions": [
-			"What is the myth of Horus?"
+			"Who/what is Wadget?",
+			"What other gods or goddesses can this symbol represent?"
 		],
 		"blob": "85b0bce3-cd98-4b02-81f6",
 		"scale": 0.10338307362479848,
@@ -64,7 +67,7 @@
 		"objfcpgeo_p": "26.820553, 30.802498",
 		"questions": [
 			"Which goddess is represented by a feather?",
-			"How is the concept of Ma'at important to the Pharaonic philosophy of religion?"
+			"How is the concept of Ma'at important to the Pharaonic (the age of the pharaohs) philosophy/religion?"
 		],
 		"blob": "dece1b4f-a4b5-4400-846b",
 		"scale": 0.09986146661010885,
@@ -79,10 +82,10 @@
 		"questions": [
 			"What is a scent cone?",
 			"Can you find a recipe for one?",
-			"What \"weird\" beauty trends do we have? What will archaeologists of 2200 C.E. think is weird?"
+			"What \"weird\" beauty trends do we have? Looking at our trends, what will archaeologists of 2200 C.E. think is weird?"
 		],
 		"blob": "7be4426c-8e07-4352-ade7",
-		"name": "Funerary Stele",
+		"name": "Funerary Stele with Horus",
 		"scale": 0.15262592089606397,
 		"translate": [29,79]
 	},
@@ -92,8 +95,10 @@
 		"objname_s": "Box with Horus figurine",
 		"objdescr_s": "(A) Box or model tomb topped with figurine of Horus as hawk; wears double crown, uraeus, and necklaces; feathers delineated; box sides eroded; height 13.4 cm, width 4.4 cm, depth 9 cm; (B) 12.6 x 6.5 x 5.6 cm",
 		"objfcpgeo_p": "26.820553, 30.802498",
+		"name": "Box with Horus Figurine",
 		"questions": [
-			"Who was Horus? What animal represented him?"
+			"Who was Horus?",
+			"What animal represented him?"
 		],
 		"blob": "e1c20e41-07d0-4482-8f5e",
 		"scale": 0.036098229888062404,
@@ -106,9 +111,10 @@
 		"objdescr_s": "Staff finial; (A) Figurine of Isis; solid cast bronze; seated Isis suckling Horus; Isis wears sun disk and uraeus; infant Horus is held on her lap; projection at feet for securing to standard; height 14.7 cm, width 4 cm (B) black painted stand; 8.2 x 4.7 x 7.3 cm",
 		"objfcpgeo_p": "26.820553, 30.802498",
 		"questions": [
-			"Who were Ma'at, Hathor, Isis, Nepthys, Ra, Horus?",
-			"What are their myths?",
-			"Map the family ree of the goddesses and gods."
+			"Who was Isis?",
+			"How are Isis and Horus related?",
+			"Can you map the family tree of the ancient Egyptian goddesses and gods?",
+			"What Christian imagery did imagery of Isis and Horus influence?"
 		],
 		"blob": "814e9478-2446-41f0-99a1",
 		"scale": 0.03614830736364369,
@@ -122,7 +128,8 @@
 		"objfcpgeo_p": "26, 32.8167",
 		"questions": [
 			"Where does ivory come from?",
-			"What animals would have been there or near trading partners?"
+			"What animals would have lived in Egypt?",
+			"Who did Egyptians trade with to get goods that they did not have locally?"
 		],
 		"blob": "776182eb-7226-43b9-8681",
 		"scale": 0.10807254020393996,
@@ -159,7 +166,8 @@
 		"objdescr_s": "Type IV model boat, sailed; 4 sailors, 1 pilot/lookout & 2 helmsmen. Canopy supported by 6 posts with coffin beneath. 1 stearing oar survived (originally 2), gangplank, 2 morring stakes, bailing bucket, 6 oars, part of bipod mast, 3 spars. Boat is white with yellow painted details",
 		"objfcpgeo_p": "26.362111, 31.911635",
 		"questions": [
-			"What was the role of the funerary boat in death rituals? What is the Book of the Dead?"
+			"What was the role of the funerary boat in death rituals?",
+			"What is the Book of the Dead?"
 		],
 		"blob": "bbcc1055-300f-4b12-8423",
 		"scale": 0.06906372240719778,
@@ -171,7 +179,8 @@
 		"objname_s": "Jar",
 		"objdescr_s": "Pottery: large buff bulging jar 4 small lug handles red ostrich boat on wavy decoration ld 12 gd 23 h 23 cm.,",
 		"objfcpgeo_p": "26.362111, 31.911635",
-		"questions": [],
+		"name": "Jar with Wavy Lines",
+		"questions": ["What is represented on this jar? (Hint: Models of the same item are often found in tombs.)"],
 		"blob": "85515e08-d391-41de-9714",
 		"scale": 0.11266192284973564,
 		"translate": [966,275]
@@ -182,7 +191,11 @@
 		"objname_s": "Model beef haunch",
 		"objdescr_s": "wooden animal leg, painted red, black and white; model of beef haunch.",
 		"objfcpgeo_p": "26.362111, 31.911635",
-		"questions": [],
+		"name": "Model Beef Haunch",
+		"questions": [
+			"What purposes did cows serve in ancient Egyptian agriculture?",
+			"What goddess did they symbolize? What did she represent?"
+		],
 		"blob": "eb46620f-587d-4c78-938e",
 		"scale": 0.2272058529573493,
 		"translate": [223,569]
@@ -193,9 +206,11 @@
 		"objname_s": "statuette",
 		"objdescr_s": "Hathor-head, quartzite prow from divine barque.",
 		"objfcpgeo_p": "26.820553, 30.802498",
+		"name": "Hathor Statuette",
 		"questions": [
-			"What is Pharaonic? What is Ptolemaic?",
-			"Which do you think this is?"
+			"What was Hathor the goddess of?",
+			"What instrument represented Hathor?",
+			"What animal was associated with Hathor?"
 		],
 		"blob": "c818522e-617f-4210-88f4",
 		"scale": 0.12552719912826596,
@@ -223,7 +238,7 @@
 		"objfcpgeo_p": "26.023564, 32.750604",
 		"questions": [
 			"How were ancient Egyptians paid?",
-			"Where was the first labor strike?"
+			"The first recorded labor strike in history took place against Rameses II during the 18th Dynasty.  What town was it in? What did the workers want more of for their pay?"
 		],
 		"blob": "1faff314-7c8d-46a4-bcf9",
 		"scale": 0.05013882179505505,
@@ -235,9 +250,10 @@
 		"objname_s": "Model",
 		"objdescr_s": "Wooden model scene of men & women: bread makers (tallest figure is 9 1/4\" high); male- miller; male- stacking bread molds; female- sifter; female- sifter.",
 		"objfcpgeo_p": "26.362111, 31.911635",
+		"name": "Model of Bread-Making Scene",
 		"questions": [
-			"What is the importance of bread and grain?",
-			"What is grain's relationship to the Nile?"
+			"What was the importance of bread and grain in ancient Egypt? ",
+			"How did the cycle of the Nile relate to the agriculture cycle in ancient Egypt?"
 		],
 		"blob": "4733115c-c98e-4193-a7d7",
 		"scale": 0.18050014549249724,
@@ -249,9 +265,10 @@
 		"objname_s": "Amulet",
 		"objdescr_s": "blue glaze, flat post with incised cross-piece; faience djed pillar amulet.",
 		"objfcpgeo_p": "26.17, 32.7272",
+		"name": "Amulet, Djed",
 		"questions": [
-			"What is the symbolism of the djed?",
-			"What is an amulet? Why are they important?",
+			"What does the <i>djed</i> symbolize, and how does that relate to the bread-making sculpture? ",
+			"What is an amulet and why are they important?",
 			"How were amulets used?"
 		],
 		"blob": "f8dbbbae-1054-423c-8a7b",
