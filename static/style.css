@@ -145,12 +145,13 @@ figcaption {
     width: 100%;
 }
 
-#completed {
-    display: none;
+.completed {
+    width: 80vw;
 }
 
-#completed:only-child {
-    display: block;
+.completed img {
+    width: 100%;
+    border: 0;
 }
 
 /* 

@@ -10,30 +10,31 @@
 
 <body class="body--match">
 
-    <div class="board">
-        <div class="instructions clearfix">
-            <h1>Time Capsule: The Stela of Prince Wepemnofret</h1>
-            <img class="shabti-avatar" src="static/shabti.gif" alt="Shabti (also spelled ushabti) were like little servants that ancient Egyptians put in tombs to help the dead. They were a bit like zombies! This shabti is here to help guide live people like you through this exploration.">
-            <p>
-                Stelae (pronounced STEL-lie, plural of stela) are decorated slabs of stone or wood. Ancient Egyptian stelae, like much of Egyptian creative output, were a type of art for the
-                dead.
-            </p>
-            <p>
-                Funerary stelae depicted the dead person’s name, and offerings from family members. People made offerings to the dead because ancient Egyptians celebrated an afterlife in which a spirit would need the same types of things a person needed in this life. So these stelae also tell archaeologists what was important to the living.
-            </p>
-            <p>
-                Can you figure out what was important to the ancient Egyptians’ daily lives by looking at this stela of the Prince Wepemnofret? To help you look closely at the stela’s symbols, try matching the corresponding photos around the stela with their descriptions to get a surprise! Simply drag each object into the box that describes it. 
-            </p>
+    <div class="clearfix">
+        <div class="board">
+            <div class="instructions clearfix">
+                <h1>Time Capsule: The Stela of Prince Wepemnofret</h1>
+                <img class="shabti-avatar" src="static/shabti.gif" alt="Shabti (also spelled ushabti) were like little servants that ancient Egyptians put in tombs to help the dead. They were a bit like zombies! This shabti is here to help guide live people like you through this exploration.">
+                <p>
+                    Stelae (pronounced STEL-lie, plural of stela) are decorated slabs of stone or wood. Ancient Egyptian stelae, like much of Egyptian creative output, were a type of art for the
+                    dead.
+                </p>
+                <p>
+                    Funerary stelae depicted the dead person’s name, and offerings from family members. People made offerings to the dead because ancient Egyptians celebrated an afterlife in which a spirit would need the same types of things a person needed in this life. So these stelae also tell archaeologists what was important to the living.
+                </p>
+                <p>
+                    Can you figure out what was important to the ancient Egyptians’ daily lives by looking at this stela of the Prince Wepemnofret? To help you look closely at the stela’s symbols, try matching the corresponding photos around the stela with their descriptions to get a surprise! Simply drag each object into the box that describes it. 
+                </p>
+            </div>
+            <div class="centerpiece clearfix"></div>
         </div>
-        <div class="centerpiece clearfix"></div>
+
+        <div class="cards clearfix">
+            <div class="completed"></div>
+        </div>
     </div>
 
-    <div class="cards clearfix">
-        <div id="completed">
-            <h1>You did it!</h1>
-            <a href="/gallery">Go to Gallery Activity</a>
-        </div>
-    </div>
+
 
     <div class="modal-shabti"></div>
 
@@ -62,6 +63,12 @@
         $('.shabti-avatar').click(function() {
             $('.modal-shabti').dialog('open');
         });
+
+        $('.completed').dialog({
+            autoOpen: false,
+            modal: true,
+            minWidth: 600
+        }).html('<h1>You did it!</h1><p>You matched them all! Now follow this mummified crocodile to our next site, where you and your teacher can further investigate how ancient Egyptians lived.</p><a href="/gallery"><img src="' + getImgUrl('aa95965a-9d3d-42fe-bc49') + '"></a><p><a href="/gallery">Go the the next site</a></p>');
 
         d3.json('static/cards.json', function(error, cards) {
 
@@ -206,6 +213,10 @@
 
                         zoom.translate([0,0]).scale(1)
                             .event(svg.transition().duration(1000));
+
+                        if (!$('.card').length) {
+                            $('.completed').dialog('open');
+                        }
                     }
                 });
             });
