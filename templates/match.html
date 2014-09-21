@@ -159,6 +159,9 @@
                             .scale(k)
                             .event(svg.transition().duration(1000));
                     });
+                
+                d3.select('body').append('div').attr('class', 'footnote')
+                    .text('(Rulers are included in some photos to show objects\' sizes. Color chips are included to confirm that your display shows objects\' true colors.)');
 
             };
             tempImage.src = stela.attr('xlink:href');
@@ -209,6 +212,5 @@
         });
 
     </script>
-
 </body>
 </html>

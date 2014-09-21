@@ -39,6 +39,13 @@ body {
     line-height: 1.5;
 }
 
+.footnote {
+    margin-bottom: 20px;
+    padding: 5px;
+    font-size: 0.8em;
+    text-align: center;
+}
+
 /* 
 ================================================================
   MATCHING ACTIVITY
