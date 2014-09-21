@@ -27,6 +27,10 @@ You should see:
     * Running on http://127.0.0.1:5000/
     * Restarting with reloader
 
+To start using the app, type this URL into your browser:
+
+    http://localhost:5000
+
 ## The team
 Time Capsule was created for UC Berkeley's 2014 [Hack the Hearst](http://hackthehearst.berkeley.edu/) event.
 * [Angela Lau](https://twitter.com/a2lau)
