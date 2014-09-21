@@ -193,8 +193,9 @@
                     $('.dialog-instructions').hide();
 
                     object.html(function() {
-                        return '<h2>' + (d.name || d.objname_s) + '</h2>' +
-                            ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '');                         
+                        return '<h2>' + (d.name) + '</h2>' +
+                            ((d.questions.length > 0) ? ('<ul><li>' + d.questions.join('</li><li>') + '</li></ul>') : '') +
+                            (d.descr ? d.descr : '');                         
                     });
                 });
 
