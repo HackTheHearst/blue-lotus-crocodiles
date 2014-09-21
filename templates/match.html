@@ -12,14 +12,16 @@
     <div class="board">
         <div class="instructions clearfix">
             <h1>Time Capsule: The Stela of Prince Wepemnofret</h1>
-            <img class="shabti-avatar" src="static/shabti.gif" alt="Ushabti">
+            <img class="shabti-avatar" src="static/shabti.gif" alt="Shabti (also spelled ushabti) were like little servants that ancient Egyptians put in tombs to help the dead. They were a bit like zombies! This shabti is here to help guide live people like you through this exploration.">
             <p>
-                Stelas, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary stelas include
-                the name of the deceased and the offerings made by family members. Can you guess what was important to the ancient Egyptians
-                by looking for common themes in the following artifacts?
+                Stelae (pronounced STEL-lie, plural of stela) are decorated slabs of stone or wood. Ancient Egyptian stelae, like much of Egyptian creative output, were a type of art for the
+                dead.
             </p>
             <p>
-                Can you match the objects on the right with the hieroglyph or symbol on the stela of Wepemnofret? Place the objects in the correct box. 
+                Funerary stelae depicted the dead person’s name, and offerings from family members. People made offerings to the dead because ancient Egyptians celebrated an afterlife in which a spirit would need the same types of things a person needed in this life. So these stelae also tell archaeologists what was important to the living.
+            </p>
+            <p>
+                Can you figure out what was important to the ancient Egyptians’ daily lives by looking at this stela of the Prince Wepemnofret? To help you look closely at the stela’s symbols, try matching the corresponding photos around the stela with their descriptions to get a surprise! Simply drag each object into the box that describes it. 
             </p>
         </div>
         <div class="centerpiece clearfix"></div>
@@ -27,7 +29,7 @@
 
     <div class="cards clearfix">
         <div id="completed">
-            <h1>Congratulations!</h1>
+            <h1>You did it!</h1>
             <a href="/gallery">Go to Gallery Activity</a>
         </div>
     </div>
@@ -63,8 +65,8 @@
             drop.append('h1')
                 .text(function(d) { return d.value; });
 
-            drop.append('p')
-                .text(function(d) { return d.hint; });
+            drop.append('div')
+                .html(function(d) { return d.hint; });
 
             var svg = d3.select('.centerpiece').insert('svg', '.drop')
                 .attr('class', 'centerpiece-image');
