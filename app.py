@@ -5,8 +5,16 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-	return render_template("index.html")
+def index():
+	def load_json(file):
+		data = open(file)
+		cards = json.load(data)
+
+	cards =	load_json("static/cards.json")
+
+	print cards
+
+	return render_template("index.html", data = cards)
 
 if __name__ == '__main__':
 	app.run(debug=True)
