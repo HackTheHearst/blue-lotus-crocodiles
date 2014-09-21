@@ -1,5 +1,6 @@
 Time Capsule
 ==========
+![Time Capsule screenshot](https://raw.githubusercontent.com/angelausy/blue-lotus-crocodiles/master/static/screenshot.png)
 [View the demo version of this application](http://crocodiles.herokuapp.com)
 
 ## Project Description
