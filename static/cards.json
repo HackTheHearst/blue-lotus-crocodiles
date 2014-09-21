@@ -7,7 +7,10 @@
 		"blob": "776182eb-7226-43b9-8681",
 		"name": "Ivory Bracelet",
 		"hint": "Bracelets were worn by both men and women, rich and poor.",
-		"value": 2
+		"value": 2,
+		"cx": 752,
+		"cy": 1197,
+		"diameter": 148
 	},
 	{
 		"id": "16a889d2-146d-4a8c-bb59-3cc5f0a992ea",
@@ -17,7 +20,10 @@
 		"blob": "7f41ddeb-c17c-4b35-9257",
 		"name": "Kohl Tube",
 		"hint": "Kohl was applied around the eyes for protection.",
-		"value": 1
+		"value": 1,
+		"cx": 966,
+		"cy": 989,
+		"diameter": 148
 	},
 	{
 		"id": "87678895-3033-440b-a531-c866230228ee",
@@ -27,7 +33,10 @@
 		"blob": "4733115c-c98e-4193-a7d7",
 		"name": "Model of Bread Making Scene",
 		"hint": "Bread was a staple of the ancient Egyptian diet and was offered to the deceased.",
-		"value": 4
+		"value": 4,
+		"cx": 1282,
+		"cy": 1396,
+		"diameter": 148
 	},
 	{
 		"id": "19ad32e1-afa7-4927-9600-b6db5d56cce6",
@@ -37,7 +46,10 @@
 		"blob": "087aff6f-b339-4f04-9eea",
 		"name": "Jar",
 		"hint": "Beer, wine, honey, and olive oil were stored in jars and offered to the deceased.",
-		"value": 5
+		"value": 5,
+		"cx": 1492,
+		"cy": 1641,
+		"diameter": 148
 	},
 	{
 		"id": "5a18fdca-e31c-40f9-8dab-db81518e2d29",
@@ -47,7 +59,10 @@
 		"blob": "e6dd23c2-76c5-4917-b945",
 		"name": "Shabti Jar",
 		"hint": "The jackal-headed deity Anubis was sometimes represented in full animal form, seated on a shrine.",
-		"value": 8
+		"value": 8,
+		"cx": 2586,
+		"cy": 1210,
+		"diameter": 148
 	},
 	{
 		"id": "33cc9de6-445d-4635-8525-aa08a06613a5",
@@ -57,7 +72,10 @@
 		"blob": "bbcc1055-300f-4b12-8423",
 		"name": "Model Funerary Boat with Crew",
 		"hint": "The ancient Egyptians believed that the gods traveled through the sky and netherworld in boats.",
-		"value": 7
+		"value": 7,
+		"cx": 2796,
+		"cy": 2043,
+		"diameter": 148
 	},
 	{
 		"id": "f62bd5d8-6f0f-460b-a1c1-d59a0f1d542b",
@@ -67,7 +85,10 @@
 		"blob": "dece1b4f-a4b5-4400-846b",
 		"name": "Scarab with Two Feathers",
 		"hint": "The symbol for truth and justice was the feather, which was used in the Weighing of the Heart ceremony.",
-		"value": 6
+		"value": 6,
+		"cx": 1796,
+		"cy": 1852,
+		"diameter": 148
 	},
 	{
 		"id": "90e97c6c-48e2-4a65-b4ac-18982e737377",
@@ -77,6 +98,9 @@
 		"blob": "eb46620f-587d-4c78-938e",
 		"name": "Model Beef Haunch",
 		"hint": "Cows were an important part of the ancient Egyptian agricultural system and symbolized rebirth.",
-		"value": 3
+		"value": 3,
+		"cx": 508,
+		"cy": 1704,
+		"diameter": 148
 	}
 ]

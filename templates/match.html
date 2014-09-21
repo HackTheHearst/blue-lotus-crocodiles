@@ -1,160 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <title>Matching</title>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-    <style>
-        body {
-            margin: 50px;
-            min-width: 1157px;
-            padding: 0;
-            font-family: 'Open Sans', "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        }
-
-        .centerpiece {
-            float: left;
-            width: 80%;
-            min-width: 925px;
-            margin-bottom: 50px;  
-        }
-
-        .instructions {
-            width: 80%;
-            margin-bottom: 25px;
-            line-height: 1.5;
-        }
-
-        .centerpiece-image {
-            cursor: zoom-in;
-            float: right;
-            width: 80%;
-            background: #eee;
-        }
-
-        .drop-area {
-            float: left;
-            width: 20%;
-        }
-
-        .cards {
-            float: left;
-            width: 18.4%;
-            margin-left: 1.6%;
-            margin-bottom: 50px;
-        }
-
-        .card {
-            cursor: move;
-            cursor: grab;
-            width: 150px;
-            margin: 0 0 8% 0;
-            padding: 10px;
-            border: 1px outset #ccc;
-            background: #fff;
-        }
-
-        .drop {
-            box-sizing: border-box;
-            float: left;
-            width: 18%;
-            min-height: 150px;
-            min-width: 150px;
-            margin-top: 2%;
-            margin-right: 2%;
-            padding: 10px;
-            border: 1px inset #ccc;
-            font-size: 0.9em;
-            line-height: 1.3;
-        }
-
-        .drop:first-of-type {
-            margin-top: 0;
-        }
-
-        figcaption {
-            font-size: 0.9em;
-            line-height: 1.3;
-        }
-
-        .drop h1 {
-            margin: 0;
-            padding: 0;
-            font-size: 20px;
-            color: #ccc;
-        }
-
-        .drop-matched h1 {
-            padding: 5px;
-            font-size: 20px;
-            color: #fff;
-        }
-
-        .artifact {
-            width: 100%;
-        }
-    </style>
+    <link href="static/style.css" rel="stylesheet">
 </head>
-<body>
+
+<body class="body--match">
+
     <div class="board">
-        <div class="instructions">
-            <h1>The Stele of Prince Wepemnofret</h1>
+        <div class="instructions clearfix">
+            <h1>Time Capsule: The Stela of Prince Wepemnofret</h1>
+            <img class="shabti-avatar" src="https://dl.dropboxusercontent.com/u/90597733/shabti.gif">
             <p>
-                Steles, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary steles include
+                Stelas, or slabs made of stone or wood, were used in ancient Egypt for funerary purposes. Commonly shown on funerary stelas include
                 the name of the deceased and the offerings made by family members. Can you guess what was important to the ancient Egyptians
                 by looking for common themes in the following artifacts?
             </p>
             <p>
-                Can you match the objects on the right with the hieroglyph or symbol on the stele of Wepemnofret? Place the objects in the correct box. 
+                Can you match the objects on the right with the hieroglyph or symbol on the stela of Wepemnofret? Place the objects in the correct box. 
             </p>
         </div>
-        <div class="centerpiece">
+        <div class="centerpiece clearfix"></div>
+    </div>
+
+    <div class="cards clearfix">
+        <div id="completed">
+            <h1>Congratulations!</h1>
+            <a href="gallery.html">Go to Gallery Activity</a>
         </div>
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script>
+    <script src="static/app.js"></script>
 
     <script>
-        var entityMap = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': '&quot;',
-        "'": '&apos;'
-        };
-
-        function escapeHtml(string) {
-            return String(string).replace(/[&<>"']/g, function (s) {
-                return entityMap[s];
-            });
-        }
-
-        function getImgUrl(blob, term) {
-            term = term || 'OriginalJpeg';
-
-            return 'https://dev.cspace.berkeley.edu/pahma_project/imageserver/blobs/' + blob + '/derivatives/' + term + '/content';
-        }
+        var deck;
 
         function onZoom() {
-            d3.select(this).select('g').attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+            if (d3.event.sourceEvent) d3.event.sourceEvent.stopPropagation();
+            d3.select('.reference').attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
         }
 
-        var stuff = []
-        
-        {% for item in data %}
-            stuff.push({{item|safe}})
-        {% endfor %}
+        var zoom =  d3.behavior.zoom()
+            .scaleExtent([1, 5])
+            .on('zoom', onZoom);
 
-        d3.json(stuff, function(error, cards) {
+        d3.json('static/cards.json', function(error, cards) {
+
+            deck = d3.shuffle(cards);
 
             var drop = d3.select('.centerpiece')
                 .selectAll('.drop')
                     .data(cards)
                   .enter().append('div')
                     .sort(function(a, b) { return a.value > b.value; })
-                    .attr('class', 'drop');
+                    .attr('class', function(d) { return 'drop drop-' + d.value; });
 
             drop.append('h1')
                 .text(function(d) { return d.value; });
@@ -165,14 +69,20 @@
             var svg = d3.select('.centerpiece').insert('svg', '.drop')
                 .attr('class', 'centerpiece-image');
 
-            var stele = svg.append('g')
-               .call(
-                    d3.behavior.zoom()
-                        .scaleExtent([0.4, 5])
-                        .on('zoom', onZoom)
-                )
-              .append('g').append(function() {
-                var href = "https://dl.dropboxusercontent.com/u/90597733/stele.jpg",
+            var stela = svg.append('g')
+                .on('click', function() {
+                    if (d3.event.defaultPrevented) return;
+
+                    d3.select('.marker-selected').attr('class', function() {
+                        return d3.select('.marker-selected').attr('class').replace(/marker-selected/, '');
+                    });
+
+                    zoom.translate([0,0]).scale(1)
+                        .event(svg.transition().duration(1000));
+                })
+                .call(zoom)
+              .append('g').attr('class', 'reference').append(function() {
+                var href = getImgUrl('96a58f7d-8538-46fd-b261', 'OriginalJpeg'),
                     $centerpieceImage = $('.centerpiece-image');
                 var img = document.createElementNS('http://www.w3.org/2000/svg', 'image');
                 img.setAttributeNS("http://www.w3.org/1999/xlink", "xlink:href", href);
@@ -184,22 +94,65 @@
             tempImage.onload = function() {
                 var width = $('svg').width();
                 var scale = width / this.width;
+                var height = this.height * scale;
 
                 svg.attr('width', width);
-                svg.attr('height', this.height * scale);
+                svg.attr('height', height);
 
-                stele
+                stela
                     .attr('width', this.width)
                     .attr('height', this.height)
                     .attr('transform', 'scale(' + scale + ')');
 
+                var marker = d3.select('.reference').selectAll('circle')
+                    .data(cards)
+                  .enter().append('circle')
+                    .attr('class', function(d) { return 'marker marker-' + d.value; })
+                    .attr('cx', function(d) { return d.cx * scale; })
+                    .attr('cy', function(d) { return d.cy * scale; })
+                    .attr('r', function(d) { return (d.diameter / 2) * scale; });
+
+                var markerLabel = d3.select('.reference').selectAll('text')
+                    .data(cards)
+                  .enter().append('text')
+                    .attr('class', 'marker-label')
+                    .attr('x', function(d) { return d.cx * scale; })
+                    .attr('y', function(d) { return d.cy * scale; })
+                    .attr('dy', '0.3em')
+                    .attr('text-anchor', 'middle')
+                    .text(function(d) { return d.value; });
+
+                d3.selectAll('.marker, .marker-label')
+                    .on('click', function(data) {
+                        d3.event.cancelBubble = true;
+                        var vcx = width / 2,
+                            vcy = height / 2,
+                            cx = data.cx * scale,
+                            cy = data.cy * scale,
+                            markerVW = data.diameter * 3.5 * scale,
+                            k = height / markerVW;
+
+                        d3.selectAll('circle').attr('class', function(d) {
+                            return d3.select('.marker-'+ d.value).attr('class').replace(/marker-selected/, '');
+                        });
+
+                        d3.select('.marker-'+ data.value).attr('class', function(d) {
+                            return d3.select('.marker-'+ d.value).attr('class') + ' marker-selected';
+                        });
+
+                        zoom
+                            .translate([vcx - cx * k, vcy - cy * k])
+                            .scale(k)
+                            .event(svg.transition().duration(1000));
+                    });
+
             };
-            tempImage.src = stele.attr('xlink:href');
+            tempImage.src = stela.attr('xlink:href');
 
 
-            var figure = d3.select('body').append('div').attr('class', 'cards')
+            var figure = d3.select('.cards')
                 .selectAll('.card')
-                    .data(d3.shuffle(cards))
+                    .data(deck)
                   .enter().append('figure')
                     .attr('class', 'card');
 
@@ -225,10 +178,14 @@
                         $(this).find('h1').text(d.value + '. ' + d.name);
                         $(this)
                             .addClass('drop-matched')
-                            .css('background', 'linear-gradient(to top, rgba(0, 0, 0, 0),  rgba(0, 0, 0, 0.6)), url("' + getImgUrl(d.blob, 'Medium') + '")')
+                            .css('background', 'linear-gradient(to top, rgba(0, 0, 0, 0.3),  rgba(0, 0, 0, 0.8)), url("' + getImgUrl(d.blob, 'Medium') + '")')
                             .css('background-size', 'cover')
                             .css('color', '#fff');
                         ui.draggable.remove();
+
+                        d3.select('.marker-' + d.value).attr('class', function() {
+                            return d3.select(this).attr('class') + ' marker-checked';
+                        });
                     }
                 });
             });

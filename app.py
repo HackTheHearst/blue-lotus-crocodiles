@@ -9,17 +9,15 @@ import json
 from flask import jsonify
 # from flask_rest_service import app
 
-
 app = Flask(__name__)
 
-
 @app.route('/')
-def index():
-	data =	open("static/cards.json")
-	cards = json.load(data)
-	print type(cards)
+def match():
+	return render_template("match.html")
 
-	return render_template("match.html", data = jsonify(cards))
+@app.route('/gallery')
+def map():
+	return render_template("gallery.html")
 
 if __name__ == '__main__':
 	app.run(debug=True)

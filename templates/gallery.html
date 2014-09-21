@@ -94,7 +94,7 @@
           .append('g');
 
 
-        d3.json('nodes.json', function(error, root) {
+        d3.json('static/nodes.json', function(error, root) {
 
             var dialog = d3.select('body').selectAll('.dialog')
                 .data(root)
