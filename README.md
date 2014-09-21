@@ -6,7 +6,7 @@ Time Capsule: The Stela of Prince Wepemnofret
 ## The project
 Time Capsule is an educational tool with two components: a matching game intended to encourage student learning, and a teacher-guided activity to make sense of Ancient Egyptian life. The application is built with Flask, a Python web framework, and uses jQuery and d3.js for the interactive features.
 
-## Installation (Mac OSX)
+## Installation (Mac OS X)
 To run the application with your computer as a server, you'll need Python installed. First, open the Terminal clone this repository:
 
     git clone https://github.com/angelausy/blue-lotus-crocodiles.git
