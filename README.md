@@ -1,2 +1,5 @@
-Woohoo!
+Time Capsule
+==========
+
+Deployment Instructions
 ==========
