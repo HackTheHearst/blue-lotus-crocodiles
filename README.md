@@ -4,7 +4,7 @@ Time Capsule: The Stela of Prince Wepemnofret
 [View the demo version of this application](http://crocodiles.herokuapp.com)
 
 ## Technologies
-Time Capsule is an educational tool with two components: a matching game intended to stimulate the student's learning, and a teacher-guided activity to make sense of Ancient Egyptian life. The application is built with Flask, a Python web framework, and uses jQuery and d3.js for the interactive features.
+Time Capsule is an educational tool with two components: a matching game intended to encourage student learning, and a teacher-guided activity to make sense of Ancient Egyptian life. The application is built with Flask, a Python web framework, and uses jQuery and d3.js for the interactive features.
 
 ## Installation
 To run the application with your computer as a server, you'll need Python installed. First, clone this repository:
