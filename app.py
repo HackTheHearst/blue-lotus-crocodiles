@@ -6,38 +6,21 @@ from bson.json_util import dumps
 from jinja2 import Template
 from pprint import pprint
 import json
+from flask_rest_service import app
 
-MONGO_URL = os.environ.get('MONGO_URL')
-if not MONGO_URL:
-	MONGO_URL = "mongodb://localhost:27017/rest"
+app.run(debug=True)
 
-app = Flask(__name__)
+# @app.route('/')
+# def index():
+# 	def load_json(file):
+# 		data = open(file)
+# 		cards = json.load(data)
 
-app.config['MONGO_URI'] = MONGO_URL
-mongo = PyMongo(app)
+# 	cards =	load_json("static/cards.json")
 
-def output_json(obj, code, headers=None):
-	resp = make_response(dumps(obj), code)
-	resp.headers.extend(headers or {})
-	return resp
+# 	print cards
 
-DEFAULT_REPRESENTATIONS = {'application/json': output_json}
-api = restful.Api(app)
-api.representations = DEFAULT_REPRESENTATIONS
+# 	return render_template("index.html", data = cards)
 
-import flask_rest_service.resources
-
-@app.route('/')
-def index():
-	def load_json(file):
-		data = open(file)
-		cards = json.load(data)
-
-	cards =	load_json("static/cards.json")
-
-	print cards
-
-	return render_template("index.html", data = cards)
-
-if __name__ == '__main__':
-	app.run(debug=True)
+# if __name__ == '__main__':
+# 	app.run(debug=True)
